@@ -1,0 +1,78 @@
+<md-toolbar class="md-primary" md-scroll-shrink ng-if="true">
+	<div class="md-toolbar-tools">
+	<md-button ng-click="appController.openMainMenu()" aria-label="Open main menu">
+			<md-icon md-svg-icon="navigation:ic_menu_24px"></md-icon>
+		</md-button>
+		<h3 class="title white-fg" style="cursor:pointer;font-size:20pt !important;color: #fff;" ng-click="appController.home()">Online Store</h3>
+		 	<form name="searchForm" class="mainform" layout="row" layout-sm="column"  layout-align="start center" flex>
+<!--
+                 <md-input-container md-no-float class="white-fg" flex>
+                  <label class="white-fg" style="color:#efefef;top:10px;">Type a brand name or mobile</label>
+                 <input class="white-fg" ng-model="vm.searchText" style="border:1px solid #efefef;height:50px;"/>
+                 </md-input-container>
+-->
+                <input type="text" placeholder="Type a brand name or model or mobile" ng-model="vm.searchText" style="width:600px;height:40px;">
+                 <md-button class="md-raised md-accent search-btn" aria-label="search" ng-click="vm.searchProd()" 
+                 style="height: 40px;margin-bottom: 7px;width: 72px;top: 3px;left: -10px;">
+        			 <md-icon md-svg-icon="action:ic_search_24px"></md-icon>
+      			  </md-button>
+            </form>
+             <md-button ng-click="appController.showFaq()" aria-label="Home">
+                FAQ
+             </md-button>
+        <!--
+             <md-button ng-click="vm.faqs()" aria-label="Home">
+                FAQ
+             </md-button>
+-->
+             <md-button ng-click="appController.trackOrder()" aria-label="Home">
+								Track Order
+             </md-button>
+               <md-button ng-click="appController.home()" aria-label="Home">
+                Login
+             </md-button>
+             <md-button ng-click="appController.viewCart()" aria-label="Home">
+                <md-icon md-svg-icon="action:ic_shopping_cart_24px"></md-icon>
+                <span class="badge">{{appController.count}}</span>
+             </md-button>
+		</div>
+</md-toolbar>
+
+<md-content layout-flex>
+	<md-card>
+		<md-card-content class="img-bg">
+
+			<h1 class="body-title" style="font-size:56pt"><span flex="30" ></span>STAY HOME AND SHOP ONLINE</h1><br>
+			<h2 class="body-sub-title" style="font-size:32pt;"><span flex="40"></span>A better way to find your online experience</h2>
+		</md-card-content>
+	</md-card>
+	<h1 class="md-primary" style="text-align:center;">Market Place</h1>
+	<div layout="row" flex>
+		<span flex="20"></span>
+			<div layout="column" flex="60">
+			<p style="text-align:justify;">We have set our sights on making Global Commerce simple. Imagine businesses anywhere in the world doing business with confidence and security. We provide a seamless experience for all businesses, from discovery to delivery. It's the future of commerce.</p>
+		</div>
+		<span flex="20"></span>
+	</div>
+	<div layout="row" flex layout-padding>
+		<div layout="column" flex="33" layout-align="center center">
+			<md-icon md-svg-icon="action:ic_lock_24px" style="border-radius: 50%;height: 100px;width:100px;background-color: #00BFFF;color:#fff;padding:20px;"></md-icon>
+			<h2> Secure Payment</h2>
+				<p>We have set our sights on making Global Commerce simple. Imagine businesses anywhere in the world doing business with confidence and security.
+				</p>
+		</div>
+		<div layout="column" flex="33" layout-align="center center">
+			<md-icon md-svg-icon="hardware:ic_security_24px" style="border-radius: 50%;height: 100px;width:100px;background-color: #FFBF00;color:#fff;padding:20px;"></md-icon>
+			<h2 > 100% Certified</h2>
+				<p>We have set our sights on making Global Commerce simple. Imagine businesses anywhere in the world doing business with confidence and security.
+				</p>
+		</div>
+		<div layout="column" flex="33" layout-align="center center">
+			<md-icon md-svg-icon="action:ic_restore_24px" style="border-radius: 50%;height: 100px;width:100px;background-color: #01DF74;color:#fff;padding:20px;"></md-icon>
+			<h2> 30 Day Return Policy</h2>
+				<p>We have set our sights on making Global Commerce simple. Imagine businesses anywhere in the world doing business with confidence and security.
+				</p>
+		</div>
+	</div>
+	<footer class="md-primary" style="text-align:center;background-color:rgb(139,195,74);height:30px;">Copy Rights &copy; 2016 Online Store. All Rights Reserved.</footer>
+</md-content>

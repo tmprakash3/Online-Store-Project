@@ -1,0 +1,57 @@
+<md-toolbar class="md-primary" md-scroll-shrink ng-if="true">
+	<div class="md-toolbar-tools">
+	<md-button ng-click="appController.openMainMenu()" aria-label="Open main menu">
+			<md-icon md-svg-icon="navigation:ic_menu_24px"></md-icon>
+		</md-button>
+		<h3 class="title white-fg" style="cursor:pointer;font-size:20pt !important;color: #fff;" ng-click="appController.home()">Online Store</h3>
+		 	<form name="searchForm" class="mainform" layout="row" layout-sm="column"  layout-align="start center" flex>
+                 <input type="text" placeholder="Type a brand name or model or mobile" ng-model="vm.searchText" style="width:600px;height:40px;">
+                 <md-button class="md-raised md-accent search-btn" aria-label="search" ng-click="vm.searchProd()" 
+                 style="height: 40px;margin-bottom: 7px;width: 72px;top: 3px;left: -10px;">
+        			 <md-icon md-svg-icon="action:ic_search_24px"></md-icon>
+      			  </md-button>
+            </form>
+            <div layout="row" flex layout-align="end center">
+            
+             <md-button ng-click="appController.showFaq()" aria-label="Home">
+                FAQ
+             </md-button>
+             <md-button ng-click="appController.trackOrder()" aria-label="Home">
+								Track Order
+             </md-button>
+             <md-button ng-click="appController.viewCart()" aria-label="Home">
+                <md-icon md-svg-icon="action:ic_shopping_cart_24px"></md-icon>
+                 <span id="badgeMessage" class="badge" ng-show="appController.count>=0">{{appController.count}}</span>
+             </md-button>
+		    </div>
+		</div>
+</md-toolbar>
+
+
+
+
+
+
+<md-content flex>
+   <div class='md-padding' layout="row" layout-wrap layout-padding>
+        <md-card class="product-card" style="width: 300px;" ng-repeat="product in list.products" ui-sref="product.list.detail({name: product.productName, id: product.productId })" ui-sref-opts="{reload: true,notify: true}"> <!-- used in beside usi-sref ui-sref-opts="{reload: true,notify: true}" -->
+<!--          <img src="http://placehold.it/150x150" class="md-card-image" alt="user avatar">-->
+          <md-card-content layout-align="center center">
+           <img ng-src="{{product.imageUrl}}" alt="img" height="200" width="200"/><br>
+              <span class="md-title"><strong>{{product.productName}}</strong></span><br>
+            <span><strong>Rs. {{product.productCost}}</strong></span><br>
+<!--            <span>Rs. {{product.discount}}</span>-->
+            <md-divider></md-divider>
+            <md-list>
+            <md-list-item><span class="md-body-2">{{product.supplierName}}</span> </md-list-item>
+             <md-list-item>
+             <span class="md-body-2" ng-if="product.freeShippingEligible == 'Y'" >
+             Free Shipping: <span class="md-body-2" ><strong>Available</strong></span>
+             </span> 
+             </md-list-item><br>
+            </md-list>
+          </md-card-content>
+        </md-card>
+    </div>
+</md-content>
+

@@ -1,0 +1,82 @@
+<md-toolbar class="md-primary" md-scroll-shrink ng-if="true">
+	<div class="md-toolbar-tools">
+	<md-button ng-click="appController.openMainMenu()" aria-label="Open main menu">
+			<md-icon md-svg-icon="navigation:ic_menu_24px"></md-icon>
+		</md-button>
+		<h3 class="title white-fg" style="cursor:pointer;font-size:20pt !important;color: #fff;" ng-click="appController.home()">Online Store</h3>
+		 	<form name="searchForm" class="mainform" layout="row" layout-sm="column"  layout-align="start center" flex>
+                 <input type="text" placeholder="Type a brand name or model or mobile" ng-model="vm.searchText" style="width:600px;height:40px;">
+                 <md-button class="md-raised md-accent search-btn" aria-label="search" ng-click="vm.searchProd()" 
+                 style="height: 40px;margin-bottom: 7px;width: 72px;top: 3px;left: -10px;">
+        			 <md-icon md-svg-icon="action:ic_search_24px"></md-icon>
+      			  </md-button>
+            </form>
+            <div layout="row" flex layout-align="end center">
+            
+             <md-button ng-click="appController.showFaq()" aria-label="Home">
+                FAQ
+             </md-button>
+             <md-button ng-click="appController.trackOrder()" aria-label="Home">
+								Track Order
+             </md-button>
+             <md-button ng-click="appController.viewCart()" aria-label="Home">
+                <md-icon md-svg-icon="action:ic_shopping_cart_24px"></md-icon>
+                 <span id="badgeMessage" class="badge" ng-show="appController.count>=0">{{appController.count}}</span>
+             </md-button>
+		    </div>
+		</div>
+</md-toolbar>
+
+    <md-content layout="row" flex layout-padding>
+   <span flex="10"></span>
+        <div layout="row" flex="100">
+            <div layout="column" flex="70" layout-padding>
+            <h3 style="font-size:12pt;color:#848484;">You have {{cart.carts.length}} item(s) in your cart</h3>
+            <h3> Order Summary </h3>
+                 
+            <table class="md-table" cellpadding="10" border="1" style="border-collapse:collapse;border:1px solid #ddd;width:100%" layout-align="center center">
+
+               <thead style="background-color: #efefef;">
+               <tr>
+                <th></th>
+                <th>Item Name</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Delivery Details</th>
+                <th>Sub Total</th>
+                <th>Action</th>
+                </tr>
+                </thead>
+
+                
+                <tbody>
+                    <tr ng-repeat="prodCart in cart.carts" >
+                    <td ng-if="cart.carts.length==0">No Items Found</td>
+                    <td><img ng-src="{{prodCart.product.imageUrl}}" width="100" height="100" /></td>
+                    <td><span style="font-weight:bold;">{{prodCart.product.productName}}</span></td>
+                    <td><input type="text" ng-model=prodCart.cart.quantity style="width:50px;"></td>
+                    <td>Rs. {{prodCart.product.productCost}}</td>
+                    <td><span class="md-body-2" ng-if="prodCart.product.freeShippingEligible == 'Y'" >
+                        Free Shipping: <strong>Available</strong></span></td>
+                    <td>{{prodCart.cart.quantity*prodCart.product.productCost}}</td>
+                    <td><a ng-href="#" ng-click="cart.removeItem(prodCart.cart.cartId)">remove</a></td>
+                    </tr>
+                </tbody>
+            </table>
+         </div>
+         <div layout="column" flex="30" class="md-padding" style="margin-top:20%;margin-left: 50px;height:150px;width:100%;">
+             <strong>Amount Payable : {{ cart.getTotal() }}</strong><br><br><br>
+<!--             <strong>Qty : {{cart.carts.length}} </strong><br><br>-->
+             <md-button class="md-raised md-accent" style="width:150px;" ng-if="cart.carts.length>0" ng-click="cart.placeOrder()">Place Order</md-button>
+             
+         </div>
+    </div>
+    
+</md-content>
+<!--
+<section id="product-content" layout="column" layout-fill flex>
+    <div layout="row" layout-fill flex>
+       
+    </div>
+</section>
+-->

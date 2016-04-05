@@ -1,0 +1,72 @@
+
+<!-- SIDENAV CONTENT -->
+<md-content class="content" flex>
+     <section>
+         <md-subheader class="section-title text-uppercase">Refine By</md-subheader>
+         <md-list>
+           <md-list-item>
+               <span class="md-caption">{{list.products.productName}}</span>
+           </md-list-item>
+            
+         </md-list>
+     </section>
+     
+     <section>
+         <md-subheader class="md-title">Brand</md-subheader>
+         <md-list>
+         <md-list-item ng-repeat="br in list.products">
+            <md-checkbox ng-model="br.brand" aria-label={{br.brand}}><span>{{br.brand}}</span></md-checkbox>
+         </md-list-item>
+
+         </md-list>
+     </section>
+     
+     <section>
+         <md-subheader class="md-title">Color</md-subheader>
+         <md-list>
+             <md-list-item>
+               <md-checkbox ng-model="list.color1" aria-label="Android"><span class="md-caption grey-fg">Black</span></md-checkbox>
+           </md-list-item>
+            <md-list-item>
+               <md-checkbox ng-model="list.color2" aria-label="IOS"><span class="md-caption grey-fg">White</span></md-checkbox>
+           </md-list-item>
+          </md-list>
+      </section>
+<!--
+           <md-list-item>
+               <md-checkbox ng-model="data.cb3" aria-label="Frozen">
+                    
+               </md-checkbox>
+               <span class="md-caption grey-fg">Frozen</span>
+           </md-list-item>
+           <md-list-item>
+               <md-checkbox ng-model="data.cb4" aria-label="Fresh">
+                  
+               </md-checkbox>
+               <span class="md-caption grey-fg">Fresh</span>
+           </md-list-item>
+-->
+       
+     
+      <section>
+         <md-subheader class="md-title">OS</md-subheader>
+         <md-list>
+             <md-list-item>
+               <md-checkbox ng-model="list.os1" aria-label="Android"> <span class="md-caption grey-fg">Android</span></md-checkbox>
+           </md-list-item>
+            <md-list-item>
+               <md-checkbox ng-model="list.os2" aria-label="IOS"> <span class="md-caption grey-fg">IOS</span></md-checkbox>
+           </md-list-item>
+          </md-list>
+        </section>
+        
+        <section>
+         <md-subheader class="md-title">Price</md-subheader>
+         <md-list>
+             <md-list-item>
+                <md-checkbox ng-model="list.products[0].cost" aria-label={{list.products.cost}} value="{{list.products[0].cost}}" ng-click="list.toggleSelection(cost)"><span>Rs.20000 and Above</span></md-checkbox>
+             </md-list-item>
+          </md-list>
+        </section>
+</md-content>
+<!-- / SIDENAV CONTENT -->
